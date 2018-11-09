@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
 
 import PrivateRoute from './components/PrivateRoute'
+import PublicRoute from './components/PublicRoute'
+
 import Dashboard from './pages/Dashboard';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
@@ -19,11 +21,12 @@ class App extends Component {
         <div className="container">
           <div>
             <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/login" component={Login} />
-              <Route path="/signup" component={Signup} />
-              <Route path="/dashboard" component={Dashboard} />
+              <PublicRoute exact path="/" component={Home} />
+              <PublicRoute path="/login" component={Login} />
+              <PublicRoute path="/signup" component={Signup} />
+              <PrivateRoute path="/dashboard" component={Dashboard} />
             </Switch>
+            <FooterBar />
           </div>
         </div>
       </AuthContext>
