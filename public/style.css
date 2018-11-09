@@ -136,6 +136,22 @@ p {
   display: flex;
   align-items: center;
 }
+.footer-menu a{
+  text-decoration: none;
+  color:white;
+}
+.footer-menu a:hover {
+  color: red;
+}
 .fa, .far, .fas{
   font-size: 1.5em;
+}
+.avatar-profile{
+  width: 100    px;
+  height: 100px;
+  border-radius: 120px;
+}
+.flex-profile-info{
+  display: flex;
+  justify-content: space-around
 }

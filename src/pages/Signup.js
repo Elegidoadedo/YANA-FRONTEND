@@ -15,14 +15,16 @@ class Signup extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const username = this.state.username;
-    const password = this.state.password;
+    const {username, password, email, phone, avatar} = this.state
 
-    auth.signup({ username, password })
+    auth.signup({ username, password, email, phone, avatar })
       .then( (user) => {
         this.setState({
             username: "",
             password: "",
+            avatar:"",
+            email:"",
+            phone:"",
         });
         this.props.setUser(user);
         this.props.history.push('/dashboard');
@@ -39,7 +41,7 @@ class Signup extends Component {
     const { username, password, email, phone, avatar } = this.state;
     return (
       <div className="flex-col-center">
-        <img class="logo-med" src={process.env.PUBLIC_URL + '/img/logo-frontpage.png'} alt="Yana icon" />
+        <img className="logo-med" src={process.env.PUBLIC_URL + '/img/logo-frontpage.png'} alt="Yana icon" />
         <form className="signup-form" onSubmit={this.handleFormSubmit}>
           <label>Username:</label>
           <input type="text" name="username" value={username} onChange={this.handleChange}/>
@@ -63,4 +65,4 @@ class Signup extends Component {
   }
 }
 
-export default withAuth()(Signup);
+export default withAuth(Signup);

@@ -40,4 +40,4 @@ class Login extends Component {
   }
 }
 
-export default withAuth()(Login);
+export default withAuth(Login);

@@ -13,4 +13,4 @@ class PublicRoute extends Component {
   }
 }
 
-export default withAuth()(PublicRoute);
+export default withAuth(PublicRoute);

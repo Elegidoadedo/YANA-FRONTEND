@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Home from './pages/Home';
+import Profile from './pages/Profile'
 
 import AuthContext from './lib/authContext';
 import Navbar from './components/Navbar';
@@ -25,6 +26,7 @@ class App extends Component {
               <PublicRoute path="/login" component={Login} />
               <PublicRoute path="/signup" component={Signup} />
               <PrivateRoute path="/dashboard" component={Dashboard} />
+              <PrivateRoute path="/profile" component={Profile} />
             </Switch>
             <FooterBar />
           </div>

@@ -9,8 +9,8 @@ class Auth {
   }
 
   signup(user) {
-    const { username, password } = user;
-    return this.auth.post('/auth/signup', {username, password})
+    const { username, password, email, phone, avatar} = user;
+    return this.auth.post('/auth/signup', {username, password, email, phone, avatar })
       .then(({ data }) => data);
   }
 
@@ -27,6 +27,10 @@ class Auth {
 
   me() {
     return this.auth.get('/auth/me')
+    .then(response => response.data)
+  }
+  addContact(){
+    return this.auth.post('/auth/addcontact', {})
     .then(response => response.data)
   }
 }

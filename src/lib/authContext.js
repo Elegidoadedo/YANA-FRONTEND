@@ -13,7 +13,7 @@ const { Provider, Consumer } = React.createContext();
 //     </Consumer>
 //   }
 // }
-export const withAuth = () => (Comp) => {
+export const withAuth = (Comp) => {
   return class WithAuth extends Component {
     render() {
       return (
