@@ -6,17 +6,13 @@ class Navbar extends Component {
     const { isLogged } = this.props;
     return (
       <div>
-        {isLogged ? <div>
-          <p>username: {this.props.user.username}</p>
-          <p onClick={this.props.logout}>Logout</p>
-        </div> : <div>
-          <Link to='/login'>Login</Link>
-          <Link to='/signup'>Signup</Link>
-        </div>
-      }
+        { isLogged ? <div className= "flex-navbar">
+          <img class="logo-peq" src={process.env.PUBLIC_URL + '/img/logo-frontpage.png'} alt="Yana icon" />
+          <a href="tel:112">CALL 112</a>
+        </div> : null}
       </div>
     )
   }
 }
 
-export default withAuth(Navbar);
+export default withAuth()(Navbar);

@@ -3,13 +3,32 @@ import authService from './auth-service';
 
 const { Provider, Consumer } = React.createContext();
 
-export const withAuth = (Comp) => { 
-  return (props) => {
-    return <Consumer>
-      {value => {
-        return <Comp {...value} {...props} />
-      }}
-    </Consumer>
+// export const withAuth = (Comp) => { 
+//   return (props) => {
+//     console.log(props)
+//     return <Consumer>
+//       {value => {
+//         return <Comp {...value} {...props} />
+//       }}
+//     </Consumer>
+//   }
+// }
+export const withAuth = () => (Comp) => {
+  return class WithAuth extends Component {
+    render() {
+      return (
+        <Consumer>
+          {(authStore) => {
+            return <Comp 
+              isLogged={authStore.isLogged}
+              user={authStore.user}
+              logout={authStore.logout}
+              setUser={authStore.setUser}
+              {...this.props} />
+          }}
+        </Consumer>
+      )
+    }    
   }
 }
 

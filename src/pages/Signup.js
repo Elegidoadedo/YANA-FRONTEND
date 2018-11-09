@@ -8,6 +8,9 @@ class Signup extends Component {
   state = {
     username: "",
     password: "",
+    email: "",
+    phone: "",
+    avatar: "",
   };
 
   handleFormSubmit = (event) => {
@@ -22,7 +25,7 @@ class Signup extends Component {
             password: "",
         });
         this.props.setUser(user);
-        this.props.history.push('/private');
+        this.props.history.push('/dashboard');
       })
       .catch( error => console.log(error) )
   }
@@ -33,23 +36,31 @@ class Signup extends Component {
   }
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, email, phone, avatar } = this.state;
     return (
-      <div>
-        <form onSubmit={this.handleFormSubmit}>
+      <div className="flex-col-center">
+        <img class="logo-med" src={process.env.PUBLIC_URL + '/img/logo-frontpage.png'} alt="Yana icon" />
+        <form className="signup-form" onSubmit={this.handleFormSubmit}>
           <label>Username:</label>
           <input type="text" name="username" value={username} onChange={this.handleChange}/>
           <label>Password:</label>
           <input type="password" name="password" value={password} onChange={this.handleChange} />
+          <label>E-mail</label>
+          <input type="email" name="email" value={email} onChange={this.handleChange} />
+          <label>Phone number</label>
+          <input type="number" name="phone" value={phone} onChange={this.handleChange} />
+          <label>Avatar</label>
+          <input type="text" name="avatar" value={avatar} onChange={this.handleChange} />
+
           <input type="submit" value="Signup" />
         </form>
 
         <p>Already have account? 
-          <Link to={"/login"}> Login</Link>
+          <Link to={"/"}> Login</Link>
         </p>
       </div>
     )
   }
 }
 
-export default withAuth(Signup);
+export default withAuth()(Signup);
