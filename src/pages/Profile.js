@@ -1,13 +1,34 @@
 import React, { Component } from 'react';
 import { withAuth } from '../lib/authContext';
 import { Link } from 'react-router-dom';
+import profileedit from '../lib/profile-service';
+
 
 
 class Profile extends Component {
  state={
-   
+   userContacts:[],
  }
+componentDidMount(){
+  profileedit.getInfo()
+  
+  .then((result)=>{
+ 
+     let arrayContact = [];
+     result.contacts.forEach((element)=>{
+   
+      arrayContact.push(element.username)
+     })
+  this.setState({
 
+    userContacts : arrayContact,  
+  })
+
+  })
+  .catch( (error)=>{
+   return  console.log("la has liado", error)
+  })
+  }
 
   render() {
     const {user} = this.props;
@@ -21,9 +42,10 @@ class Profile extends Component {
             <p>Phone Number: {user.phone}</p>
             <p>Contacts:</p>
             <ul>
-              {user.contacts ? user.contacts.forEach(contact => {
-                return <li>{contact.username}</li>
-              }): null}
+            {this.state.userContacts.map( (contact,idx) =>{
+              return <li key={idx}> {contact} </li>
+            })}
+
             
             </ul>
           </div>

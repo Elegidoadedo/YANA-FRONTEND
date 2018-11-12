@@ -10,7 +10,7 @@ class ProfileService {
 
   edit(user) {
     const { username, password, email, phone, avatar} = user;
-    return this.profile.patch('/profile/edit', {username, password, email, phone, avatar })
+    return this.profile.put('/profile/edit', {username, password, email, phone, avatar })
       .then(({ data }) => data);
   }
 
@@ -19,6 +19,10 @@ class ProfileService {
     .then(({ data }) => data);
   }
 
+  getInfo() {
+    return this.profile.get('/profile/info')
+    .then(({ data }) => data);
+  }
 
 
 }

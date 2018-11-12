@@ -12,32 +12,43 @@ class Profile extends Component {
  }
 
   handleChange = (event) => {  
-    const {value} = event.target;
-    console.log( value)
+    // const {value} = event.target;
+    // console.log( value)
 
-    console.log( this.state.username)
+    // console.log( this.state.username)
     this.setState( {
       [event.target.name]: event.target.value,
+    
 
     });
   }
-  // componentDidMount (){
-  //   let user = this.state
-  //   profileedit.find( user);
-  //   this.setState({user});
-  // }
+  
+  componentDidMount (){
+    // let user = this.state
+    // profileedit.find( user);
+    this.setState({
+      username:this.props.user.username,
+      phone: this.props.user.phone,
+      email: this.props.user.email,
+      avatar: this.props.user.avatar,
+    });
+  }
   
 
   handleFormSubmit = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     const {username, password, email, phone, avatar} = this.state
 
 
       profileedit.edit({username, password, email, phone, avatar})
       .then((result)=>{
-        console.log (result)
+        this.props.setUser(result);
+        console.log ("muestro esto:" ,result)
         this.setState( {
-          [event.target.name]: event.target.value,})
+          username:result.username,
+          phone: result.phone,
+          email: result.email,
+          avatar: result.avatar})
         
 
       })
@@ -50,8 +61,7 @@ class Profile extends Component {
         profileedit.addcontact({contact})
         .then((result)=>{
           console.log (result)
-          this.setState( {
-            [event.target.name]: event.target.value,})
+          this.setState( {result})
           
   
         })
@@ -66,13 +76,13 @@ class Profile extends Component {
       <div>
       <form >
         <label>Username</label>
-        <input type="text" name="username" value={this.state.value} placeholder={user.username} onChange={this.handleChange} />
+        <input type="text" name="username" value={this.state.username} placeholder={user.username} onChange={this.handleChange} />
         <label>Email</label>
-        <input type="email" name="email" value={this.state.value} placeholder={user.email} onChange={this.handleChange}/>
+        <input type="email" name="email" value={this.state.email} placeholder={user.email} onChange={this.handleChange}/>
         <label>Phone</label>
-        <input type="number" name="phone" value={this.state.value} placeholder={user.phone} onChange={this.handleChange}/>
+        <input type="number" name="phone" value={this.state.phone}  onChange={this.handleChange}/>
         <label>Avatar</label>
-        <input type="text" name="avatar" value={this.state.value} placeholder={user.avatar} onChange={this.handleChange}/>
+        <input type="text" name="avatar" value={this.state.avatar} placeholder={user.avatar} onChange={this.handleChange}/>
         <button type="submit" onClick={this.handleFormSubmit}>Submit!</button>
       </form>
 
