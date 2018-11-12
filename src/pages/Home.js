@@ -8,7 +8,7 @@ import Signup from './Signup';
   render() {
     return (
       <div className= "flex-col-center">
-        <img  src={process.env.PUBLIC_URL + '/img/logo-frontpage.png'} alt="Yana icon" />
+        <img className="logo-front" src={process.env.PUBLIC_URL + '/img/logo-frontpage.svg'} alt="Yana icon" />
     <p> You have already an Account?  <Link to='./Login'>Log in!</Link></p>
     <p> Do you need an Account?  <Link to='./Signup'>SIGN UP!</Link></p>
       </div>

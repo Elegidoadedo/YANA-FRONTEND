@@ -9,7 +9,7 @@ class Dashboard extends Component {
 
   createAlert = () => {
     if(!this.state.alertmode){
-      alertedit.create(this.props.user._id)
+      alertedit.create(this.props.user)
       this.setState({
         alertmode: true,
       })
@@ -22,11 +22,22 @@ class Dashboard extends Component {
       })
       console.log (this.state.alertmode)
     }
+
+    handleEraseMessage = () =>{
+      
+    }
   }
   render() {
     return (
       <div>
-        <button className="sos-button" onClick={this.createAlert}>S.O.S</button>          
+        <button className="sos-button" onClick={this.createAlert}>S.O.S</button>  
+        { this.props.user.message ?  <ul>
+          {console.log( this.props.user)}
+          {this.props.user.message.map ( element => {
+            return <li>{element}</li>
+          })}
+        </ul>: null}
+        <button className="botton" onclick={this.handleEraseMessage}>Erase all messages</button>       
       </div>
     )
   }

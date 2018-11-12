@@ -7,7 +7,7 @@ import profileedit from '../lib/profile-service';
 
 class Profile extends Component {
  state={
-   userContacts:[],
+   userContacts:[{}],
  }
 componentDidMount(){
   profileedit.getInfo()
@@ -17,7 +17,7 @@ componentDidMount(){
      let arrayContact = [];
      result.contacts.forEach((element)=>{
    
-      arrayContact.push(element.username)
+      arrayContact.push({ 'username': element.username, 'avatar': element.avatar })
      })
   this.setState({
 
@@ -43,7 +43,7 @@ componentDidMount(){
             <p>Contacts:</p>
             <ul>
             {this.state.userContacts.map( (contact,idx) =>{
-              return <li key={idx}> {contact} </li>
+              return <li key={idx}><img className="avatar-contacts" src={contact.avatar} alt="avatsar"></img>   {contact.username} </li>
             })}
 
             

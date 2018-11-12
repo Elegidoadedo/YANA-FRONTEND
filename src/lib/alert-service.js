@@ -10,9 +10,17 @@ class AlertService {
   }
 
 
-    create(id){
-      return this.alert.post('/alerts/add', {"id":id})
+    create(user){
+      return this.alert.post('/alerts/add', {"id":user._id, 'heroes':user.contacts})
       .then(({data}) => data)
+    }
+
+    getAlerts(id){
+      return this.alert.get(`/alerts/${id}`, {"id":id})
+    }
+
+    sendMessage(id, name){
+      return this.alert.post('/alerts/message', {"id":id, "name": name})
     }
 
 
