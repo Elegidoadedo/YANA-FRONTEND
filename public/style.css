@@ -9,6 +9,8 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background-color: #ddf0f2;
+  color: #225566;
 }
 
 
@@ -105,13 +107,13 @@ p {
 }
 
 .flex-navbar a{
-  padding: 10px;
-  margin-bottom: 45px;
+  padding: 3px 10px;
   background-color: black;
   color: yellow;
   font-weight: bold;
-  font-size: 1.4em;
-  border-radius: 12px;
+  font-size: 1.2em;
+  border: 1px solid yellow;
+  height: 40px;
 }
 
 .sos-button{
@@ -130,7 +132,7 @@ p {
   position: fixed;
   height: 60px;
   color: white;
-  background-color: rgba(11, 11, 11, 0.5);
+  background-color: #225566;
   left: 0;
   justify-content: space-around;
   display: flex;
@@ -154,4 +156,12 @@ p {
 .flex-profile-info{
   display: flex;
   justify-content: space-around
+}
+
+label{
+  color: #225566;
+}
+input[type='submit']{
+  background-color: #225566;
+  color: white;
 }

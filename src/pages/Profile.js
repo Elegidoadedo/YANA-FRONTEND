@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { withAuth } from '../lib/authContext';
+import { Link } from 'react-router-dom';
 
 
 class Profile extends Component {
+ state={
+   
+ }
+
+
   render() {
     const {user} = this.props;
        
@@ -18,11 +24,12 @@ class Profile extends Component {
               {user.contacts ? user.contacts.forEach(contact => {
                 return <li>{contact.username}</li>
               }): null}
-
+            
             </ul>
           </div>
           <img className="avatar-profile" src={user.avatar} alt="avatar"></img>
          </div>
+        <Link to="./edit-profile" >Edit </Link> 
       </div>
     )
   }
