@@ -23,7 +23,7 @@ class Geolocation extends Component {
   }
   
   geolocate = () => {
-     navigator.geolocation.watchPosition(this.success, this.error, options)
+     navigator.geolocation.getCurrentPosition(this.success, this.error, options)
      
   }
 
