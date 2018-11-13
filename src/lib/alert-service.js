@@ -23,9 +23,9 @@ class AlertService {
       return this.alert.post('/alerts/message', {"id":id, "name": name})
     }
 
-    // deletemessages(id){
-    //   return this.alert.post('/alerts/deletemessage' {"id":id})
-    // }
+    deletemessages(id){
+      return this.alert.post('/alerts/deletemessage', {"id":id})
+    }
 
     delete(id){
       return this.alert.post('/alerts/delete', {"id":id})
