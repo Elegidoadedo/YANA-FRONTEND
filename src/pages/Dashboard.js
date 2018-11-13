@@ -5,6 +5,7 @@ import alertedit from '../lib/alert-service';
 class Dashboard extends Component {
   state={
     alertmode: false,
+    messages: false,
   }
 
   createAlert = () => {
@@ -22,11 +23,16 @@ class Dashboard extends Component {
       })
       console.log (this.state.alertmode)
     }
-
-    // handleEraseMessage = () =>{
-      
-    // }
   }
+
+  // handleEraseMessage = () =>{
+  //   alertedit.deletemessages(this.props.user._id)
+  //   this.setState({
+  //     message: true,
+  //   })
+
+  // }
+
   render() {
     return (
       <div>
@@ -37,7 +43,7 @@ class Dashboard extends Component {
             return <li>{element}</li>
           })}
         </ul>: null}
-        <button className="botton" onclick={this.handleEraseMessage}>Erase all messages</button>       
+        <button className="botton" >Erase all messages</button>       
       </div>
     )
   }
