@@ -23,9 +23,9 @@ class Dashboard extends Component {
       console.log (this.state.alertmode)
     }
 
-    handleEraseMessage = () =>{
+    // handleEraseMessage = () =>{
       
-    }
+    // }
   }
   render() {
     return (
