@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import geopos from '../lib/geo-service';
 
 const options = {
   enableHighAccuracy: true,
@@ -9,8 +10,15 @@ const options = {
 class Geolocation extends Component {
   
   success= (pos) => {
-    var crd = pos.coords;
-  
+    let crd = pos.coords;
+    console.log("esto es crd en la creacion de coordenadas:",crd);
+    geopos.addpos(crd)
+    .then( result => {
+      console.log('todo guay!')
+    })
+    .catch ( error =>{
+      console.log('algo falló', error)
+    })
     console.log('Your current position is:');
     console.log(`Latitude : ${crd.latitude}`);
     console.log(`Longitude: ${crd.longitude}`);

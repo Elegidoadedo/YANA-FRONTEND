@@ -1,0 +1,35 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "symbolLayout": {
+        "marker-color": "#0ffa1b",
+        "marker-size": "medium",
+        "marker-symbol": "star"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.163459062576294,
+          41.39968460197589
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "symbolLayout": {
+        "marker-color": "#fa1010",
+        "marker-size": "medium",
+        "marker-symbol": "triangle"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.160733938217163,
+          41.39891200303971
+        ]
+      }
+    }
+  ]
+}
