@@ -26,6 +26,7 @@ class Dashboard extends Component {
 
   createAlert = () => {
     if(!this.state.alertmode){
+      console.log("creando alerta")
       alertedit.create(this.props.user)
       this.setState({
         alertmode: true,
@@ -33,6 +34,7 @@ class Dashboard extends Component {
       console.log (this.state.alertmode)
 
     } else{
+      console.log("borrando alerta")
       alertedit.delete(this.props.user._id)
       this.setState({
         alertmode: false,
@@ -58,16 +60,25 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <button className="sos-button" onClick={this.createAlert}>S.O.S</button>  
-        { this.props.user.message ?  <ul>
-          {console.log( this.props.user)}
-        <Geolocation />
-        
-          {this.props.user.message.map ( element => {
-            return <li>{element}</li>
-          })}
-        </ul>: null}
-        <button className="botton" onClick={this.handleEraseMessage} >Erase all messages</button>       
+        { !this.state.alertmode ? <img className="sos-button" onClick={this.createAlert} src="/img/logo-header.svg" />: <section className="sos-container">
+          <img className="sos-button" onClick={this.createAlert} src="/img/logo-header.svg" />  
+          <div className="radar"></div>
+          <div className="radar"></div>
+          <div className="radar"></div>
+          <div className="radar"></div>
+          <h3>Sending Emergency signal:</h3>
+        </section>
+        }
+          <a className="call112" href="tel:112">CALL 112</a>
+          { this.props.user.message ?  <ul>
+            {console.log( this.props.user)}
+          <Geolocation />
+          
+            {this.props.user.message.map ( element => {
+              return <li>{element}</li>
+            })}
+          </ul>: null}
+        <button className="botton test" onClick={this.handleEraseMessage} >Erase all messages</button>       
       </div>
     )
   }

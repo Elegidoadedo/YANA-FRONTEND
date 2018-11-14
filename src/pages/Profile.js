@@ -7,6 +7,7 @@ import profileedit from '../lib/profile-service';
 
 class Profile extends Component {
  state={
+   user:null,
    userContacts:[{}],
  }
 componentDidMount(){
@@ -20,8 +21,7 @@ componentDidMount(){
       arrayContact.push({ 'username': element.username, 'avatar': element.avatar })
      })
   this.setState({
-
-    userContacts : arrayContact,  
+    user:result, 
   })
 
   })
@@ -31,26 +31,41 @@ componentDidMount(){
   }
 
   render() {
-    const {user} = this.props;
+    const {user} = this.state;
        
     return (
       <div>
-        <div className="flex-profile-info">
-          <div>
-            <p>Name: {user.username}</p>
-            <p>{user.email}</p>
-            <p>Phone Number: {user.phone}</p>
-            <p>Contacts:</p>
-            <ul>
-            {this.state.userContacts.map( (contact,idx) =>{
-              return <li key={idx}><img className="avatar-contacts" src={contact.avatar} alt="avatsar"></img>   {contact.username} </li>
-            })}
-
-            
-            </ul>
+        { user ? <div>
+          <div className="flex-profile-info">
+            <div>
+              <section className= "section-flex">
+                <p className="text-bold">Name:</p>
+                <p> {user.username}</p>
+              </section>
+              <section className= "section-flex">
+                <p className="text-bold">Email:</p>
+                <p>{user.email}</p>
+              </section>
+              <section className= "section-flex">
+              <p className="text-bold">Phone Number:</p>
+              <p>{user.phone}</p>
+              </section>
+            </div>
+            <img className="avatar-profile" src={user.avatar} alt="avatar"></img>
           </div>
-          <img className="avatar-profile" src={user.avatar} alt="avatar"></img>
+         <div>
+         <h3>Contacts:</h3>
+         <ul className="row-3ele">
+         {user.contacts.map( (contact,idx) =>{
+           console.log(contact)
+           return <li key={idx} className="article-contacts"> <img className="avatar-contacts" src={contact.avatar} alt="avatsar"></img>   <p>{contact.username}</p></li>
+         })}
+
+         
+         </ul>
          </div>
+         </div>
+        :null }
         <Link to="./edit-profile" >Edit </Link> 
       </div>
     )

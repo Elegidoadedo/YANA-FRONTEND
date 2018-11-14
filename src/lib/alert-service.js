@@ -15,8 +15,8 @@ class AlertService {
       .then(({data}) => data)
     }
 
-    getAlerts(id){
-      return this.alert.get(`/alerts/${id}`, {"id":id})
+    getAlerts(){
+      return this.alert.get('/alerts/')
     }
 
     sendMessage(id, name){

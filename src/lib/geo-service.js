@@ -15,6 +15,11 @@ class GeoService {
     .then(({data}) => data)
   }
 
+  getinfo(victim){
+    return this.geopos.post('/geo/info', {"victim":victim})
+    .then(({data}) => data)
+  }
+
 
 
     addpos(data){
