@@ -10,25 +10,26 @@ class Profile extends Component {
    user:null,
    userContacts:[{}],
  }
-componentDidMount(){
-  profileedit.getInfo()
-  
-  .then((result)=>{
- 
-     let arrayContact = [];
-     result.contacts.forEach((element)=>{
-   
-      arrayContact.push({ 'username': element.username, 'avatar': element.avatar })
-     })
-  this.setState({
-    user:result, 
-  })
 
-  })
-  .catch( (error)=>{
-   return  console.log("la has liado", error)
-  })
-  }
+  componentDidMount(){
+    profileedit.getInfo()
+    
+    .then((result)=>{
+  
+      let arrayContact = [];
+      result.contacts.forEach((element)=>{
+    
+        arrayContact.push({ 'username': element.username, 'avatar': element.avatar })
+      })
+    this.setState({
+      user:result, 
+    })
+
+    })
+    .catch( (error)=>{
+    return  console.log("la has liado", error)
+    })
+    }
 
   render() {
     const {user} = this.state;

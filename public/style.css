@@ -182,13 +182,14 @@ input[type='submit']{
 .row-3ele{
   display:flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 .article-contacts{
   display:flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width:30%;
+  width:35%;
 }
 .map{
   display:flex;

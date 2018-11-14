@@ -8,6 +8,11 @@ class ProfileService {
     })
   }
 
+  alertmode(mode) {
+    return this.profile.patch('/profile/alertmode', {mode})
+    .then(({ data }) => data);
+  }
+
   edit(user) {
     const { username, password, email, phone, avatar} = user;
     return this.profile.put('/profile/edit', {username, password, email, phone, avatar })

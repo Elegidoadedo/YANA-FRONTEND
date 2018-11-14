@@ -11,7 +11,6 @@ class Geolocation extends Component {
   
   success= (pos) => {
     let crd = pos.coords;
-    console.log("esto es crd en la creacion de coordenadas:",crd);
     geopos.addpos(crd)
     .then( result => {
       console.log('todo guay!')
@@ -22,7 +21,6 @@ class Geolocation extends Component {
     console.log('Your current position is:');
     console.log(`Latitude : ${crd.latitude}`);
     console.log(`Longitude: ${crd.longitude}`);
-    console.log(`More or less ${crd.accuracy} meters.`);
   }
   
   

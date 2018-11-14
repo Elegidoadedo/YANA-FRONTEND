@@ -2,66 +2,135 @@ import React, { Component } from 'react';
 import { withAuth } from '../lib/authContext';
 import alertedit from '../lib/alert-service';
 import Geolocation from '../components/Geolocation';
+import profileedit from '../lib/profile-service';
 
 
 class Dashboard extends Component {
+  intervalID = 0;
   state={
+    user: null,
     alertmode: false,
-    messages: false,
-  //   coords: {
-  //     latitude,
-  //     longitude,
-  //     altitude,
-  //     accuracy,
-  //     altitudeAccuracy,
-  //     heading,
-  //     speed,
-  // },
-  // isGeolocationAvailable, // boolean flag indicating that the browser supports the Geolocation API
-  // isGeolocationEnabled, // boolean flag indicating that the user has allowed the use of the Geolocation API
-  // positionError, // object with the error returned from the Geolocation API call
-}
+  }
 
+
+  componentDidMount(){
+    this.intervalID =  setInterval(()=>{
+      profileedit.getInfo()
+      .then((result)=>{
+      console.log("ME CARGO EN EL DIDMOUTN STATE", result.alertmode);
+      this.setState({
+        user:result,
+        alertmode:result.alertmode,
+      })
+    })},
+      5000
+    );}
+      componentDidUnmount(){
+        clearInterval(this.intervalID);
+      }
+      // profileedit.getInfo()
+      // .then((result)=>{
+      //   console.log("ME CARGO EN EL DIDMOUTN STATE", result.alertmode)
+      //   this.setState({
+      //     user:result,
+      //     alertmode:result.alertmode, 
+      //   })
+      // })
+      // .catch( (error)=>{
+      // return  console.log("la has liado", error)
+      // })
  
-
   createAlert = () => {
     if(!this.state.alertmode){
       console.log("creando alerta")
-      alertedit.create(this.props.user)
-      this.setState({
-        alertmode: true,
+      profileedit.alertmode("true")
+      .then((result)=>{
+        alertedit.create(this.state.user)
+        .then((result2)=>{
+          console.log("ESTO ES EL RESULTO A CAMBIAR crear",result)
+          console.log("estado 1",this.state.user.alertmode)
+         
+          this.setState({
+            user:result,
+            alertmode:true, 
+            
+          })
+          console.log("estado 2",this.state.user.alertmode)
+        })
+        .catch( (error)=>{
+         return  console.log("la has liado", error)
+        })
       })
-      console.log (this.state.alertmode)
 
-    } else{
+    } else if(this.state.alertmode){
       console.log("borrando alerta")
-      alertedit.delete(this.props.user._id)
-      this.setState({
-        alertmode: false,
+      alertedit.delete(this.state.user._id)
+      .then((result)=>{
+        profileedit.alertmode("false")
+        .then((result)=>{
+          console.log("ESTO ES EL RESULTO A CAMBIAR borrar",result)
+          this.setState({
+            user:result, 
+            alertmode: false,
+          })
+        })
+        .catch( (error)=>{
+         return  console.log("la has liado", error)
+        })
       })
-      console.log (this.state.alertmode)
-    }
-  }
+
+    }}; 
 
   handleEraseMessage = () =>{
-    alertedit.deletemessages(this.props.user._id)
-    
-    this.setState({
-      messages: false,
+    alertedit.deletemessages(this.state.user._id)
+    .then((result)=>{
+      profileedit.getInfo()
+      .then((result)=>{
+        this.setState({
+          user:result, 
+        })
+      })
+      .catch( (error)=>{
+       return  console.log("la has liado", error)
+      })
     })
-  }
+    .catch( (error)=>{
+     return  console.log("la has liado", error)
+    })
+  
+  .then((result)=>{
+    this.setState({
+      user:result, 
+    })
+  })
+  .catch( (error)=>{
+   return  console.log("la has liado", error)
+  })
+}
 
-  // componentDidMount(){
-  //   //añadir actualizacion de la geolocation
-  // }
-
-
+reqy = () =>{setInterval(()=>{
+  profileedit.getInfo()
+  .then((result)=>{
+  console.log("ME CARGO EN EL DIDMOUTN STATE", result.alertmode);
+  this.setState({
+    user:result,
+    alertmode:result.alertmode,
+  })
+})},
+  2000
+)};
 
   render() {
+
+  
+
+    let {user}= this.state;
     return (
       <div>
-        { !this.state.alertmode ? <img className="sos-button" onClick={this.createAlert} src="/img/logo-header.svg" />: <section className="sos-container">
+        {!user ? <Geolocation /> : !this.state.alertmode ? <img className="sos-button" onClick={this.createAlert} src="/img/logo-header.svg" />  : <section className="sos-container">
           <img className="sos-button" onClick={this.createAlert} src="/img/logo-header.svg" />  
+          
+        {console.log("ESTO ES EL ESTADO DE ALERTMODE:", user.alertmode)}
           <div className="radar"></div>
           <div className="radar"></div>
           <div className="radar"></div>
@@ -69,15 +138,13 @@ class Dashboard extends Component {
           <h3>Sending Emergency signal:</h3>
         </section>
         }
+
           <a className="call112" href="tel:112">CALL 112</a>
-          { this.props.user.message ?  <ul>
-            {console.log( this.props.user)}
-          <Geolocation />
-          
-            {this.props.user.message.map ( element => {
+          { !user ?null :  <ul>
+            { !user.message ? null:user.message.map ( element => {
               return <li>{element}</li>
             })}
-          </ul>: null}
+          </ul>}
         <button className="botton test" onClick={this.handleEraseMessage} >Erase all messages</button>       
       </div>
     )
