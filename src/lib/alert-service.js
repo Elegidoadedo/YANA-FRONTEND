@@ -11,7 +11,7 @@ class AlertService {
 
 
     create(user){
-      return this.alert.post('/alerts/add', {"id":user._id, 'heroes':user.contacts})
+      return this.alert.post('/alerts/add', {"id":user._id, 'heroes':user.contacts, 'location':user.location})
       .then(({data}) => data)
     }
 

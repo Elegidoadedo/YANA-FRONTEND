@@ -6,14 +6,22 @@ import profileedit from '../lib/profile-service';
 
 
 class Dashboard extends Component {
-  intervalID = 0;
   state={
     user: null,
     alertmode: false,
   }
-
-
+  intervalID = 0;
+  
+  
   componentDidMount(){
+          profileedit.getInfo()
+      .then((result)=>{
+      console.log("ME CARGO EN EL DIDMOUTN STATE", result.alertmode);
+      this.setState({
+        user:result,
+        alertmode:result.alertmode,
+      })
+    })
     this.intervalID =  setInterval(()=>{
       profileedit.getInfo()
       .then((result)=>{
@@ -23,32 +31,23 @@ class Dashboard extends Component {
         alertmode:result.alertmode,
       })
     })},
-      5000
+      2000
     );}
-      componentDidUnmount(){
+
+
+      componentWillUnmount(){
         clearInterval(this.intervalID);
       }
-      // profileedit.getInfo()
-      // .then((result)=>{
-      //   console.log("ME CARGO EN EL DIDMOUTN STATE", result.alertmode)
-      //   this.setState({
-      //     user:result,
-      //     alertmode:result.alertmode, 
-      //   })
-      // })
-      // .catch( (error)=>{
-      // return  console.log("la has liado", error)
-      // })
  
   createAlert = () => {
     if(!this.state.alertmode){
       console.log("creando alerta")
       profileedit.alertmode("true")
       .then((result)=>{
+        console.log("OJO AQUIII", this.state.user)
         alertedit.create(this.state.user)
         .then((result2)=>{
-          console.log("ESTO ES EL RESULTO A CAMBIAR crear",result)
-          console.log("estado 1",this.state.user.alertmode)
+          console.log("ESTO ES EL RESULTO A CAMBIAR crear",result2)
          
           this.setState({
             user:result,
@@ -108,28 +107,17 @@ class Dashboard extends Component {
   })
 }
 
-reqy = () =>{setInterval(()=>{
-  profileedit.getInfo()
-  .then((result)=>{
-  console.log("ME CARGO EN EL DIDMOUTN STATE", result.alertmode);
-  this.setState({
-    user:result,
-    alertmode:result.alertmode,
-  })
-})},
-  2000
-)};
+
 
   render() {
 
-  
 
     let {user}= this.state;
     return (
       <div>
         {!user ? <Geolocation /> : !this.state.alertmode ? <img className="sos-button" onClick={this.createAlert} src="/img/logo-header.svg" />  : <section className="sos-container">
           <img className="sos-button" onClick={this.createAlert} src="/img/logo-header.svg" />  
-          
+          <Geolocation />
         {console.log("ESTO ES EL ESTADO DE ALERTMODE:", user.alertmode)}
           <div className="radar"></div>
           <div className="radar"></div>

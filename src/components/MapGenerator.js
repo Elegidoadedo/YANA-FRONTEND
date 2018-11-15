@@ -23,7 +23,7 @@ const Map = ReactMapboxGl({
      console.log("viene victim como prop?", this.props.alert)
      geopos.getinfo(this.props.alert)
      .then( (result) =>{
-
+        console.log('ESTO ES USER PARA EL MAP:', result.user)
        this.setState({
          user: result.user,
          victim:result.victim,
