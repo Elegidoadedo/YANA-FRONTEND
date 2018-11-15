@@ -27,7 +27,7 @@ class Profile extends Component {
 
     })
     .catch( (error)=>{
-    return  console.log("la has liado", error)
+    return  console.warn(error)
     })
     }
 
@@ -58,7 +58,6 @@ class Profile extends Component {
          <h3>Contacts:</h3>
          <ul className="row-3ele">
          {user.contacts.map( (contact,idx) =>{
-           console.log(contact)
            return <li key={idx} className="article-contacts"> <img className="avatar-contacts" src={contact.avatar} alt="avatsar"></img>   <p>{contact.username}</p></li>
          })}
 

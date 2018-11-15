@@ -20,7 +20,6 @@ class GeoService {
   }
 
   addpos(data){
-    console.log("esto es data del service", data.coont)
     return this.geopos.put('/geo/set', {"latitude": data.latitude,"longitude": data.longitude})
     .then(({data}) => data)
   }

@@ -15,10 +15,9 @@ class Login extends Component {
     auth.login({ username, password })
     .then( (user) => {
       this.props.setUser(user)
-      console.log(this.props.history)
       this.props.history.push('/dashboard'); 
     })
-    .catch( error => console.log(error) )
+    .catch( error => console.warn(error) )
   }
 
   handleChange = (event) => {  

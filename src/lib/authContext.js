@@ -63,7 +63,6 @@ export default class AuthContext extends Component {
       })
     })
     .catch((error)=>{
-      console.log('Hay que manejar errores')
     })
   }
 

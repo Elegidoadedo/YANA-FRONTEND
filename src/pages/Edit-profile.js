@@ -33,7 +33,6 @@ class Profile extends Component {
     profileedit.edit({username, password, email, phone, avatar})
     .then((result)=>{
       this.props.setUser(result);
-      console.log ("muestro esto:" ,result)
       this.setState( {
         username:result.username,
         phone: result.phone,
