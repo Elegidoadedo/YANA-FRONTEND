@@ -54,7 +54,7 @@ class Profile extends Component {
     const {user} = this.props;
 
     return (
-      <div>
+      <div className="botton">
       <form >
         <label>Username</label>
         <input type="text" name="username" value={this.state.username} placeholder={user.username} onChange={this.handleChange} />

@@ -8,7 +8,7 @@ class Navbar extends Component {
     return (
       <div>
         { isLogged ? <div className= "flex-navbar">
-          <img className="logo-peq" src={process.env.PUBLIC_URL + '/img/logo-header.svg'} alt="Yana icon" />
+          <img className="logo-peq nav-logo" src={process.env.PUBLIC_URL + '/img/logo-header.svg'} alt="Yana icon" />
           </div> : null
         }
       </div>

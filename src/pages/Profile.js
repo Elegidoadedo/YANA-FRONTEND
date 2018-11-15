@@ -66,7 +66,7 @@ class Profile extends Component {
          </div>
          </div>
         :null }
-        <div className="call-container">
+        <div className="call-container botton">
         <Link className="call112" to="./edit-profile" >Edit </Link> 
         </div>
       </div>

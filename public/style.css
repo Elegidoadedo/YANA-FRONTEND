@@ -312,3 +312,6 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact,.mapboxgl-ctrl-attrib.mapboxgl-compact::af
 .flex-col-center a{
   text-transform: uppercase;
 }
+.nav-logo{
+  margin: 20px 0 0 20px;
+}
