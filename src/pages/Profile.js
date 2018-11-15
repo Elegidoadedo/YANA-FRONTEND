@@ -27,7 +27,7 @@ class Profile extends Component {
 
     })
     .catch( (error)=>{
-    return  console.warn(error)
+    
     })
     }
 

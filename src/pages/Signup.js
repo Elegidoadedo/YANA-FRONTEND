@@ -29,7 +29,7 @@ class Signup extends Component {
         this.props.setUser(user);
         this.props.history.push('/dashboard');
       })
-      .catch( error => console.warn(error) )
+      .catch( error => (error) )
   }
 
   handleChange = (event) => {  

@@ -51,12 +51,11 @@ class Dashboard extends Component {
           })
         })
         .catch( (error)=>{
-         return  console.log("la has liado", error)
+        //  return  console.warn(error)
         })
       })
 
     } else if(this.state.alertmode){
-      console.log("borrando alerta")
       alertedit.delete(this.state.user._id)
       .then((result)=>{
         profileedit.alertmode("false")
@@ -67,7 +66,7 @@ class Dashboard extends Component {
           })
         })
         .catch( (error)=>{
-         return  console.log("la has liado", error)
+        //  return  console.warn(error)
         })
       })
     }
@@ -83,11 +82,11 @@ class Dashboard extends Component {
         })
       })
       .catch( (error)=>{
-       return  console.warn(error)
+      //  return  console.warn(error)
       })
     })
     .catch( (error)=>{
-     return  console.warn( error)
+    //  return  console.warn( error)
     })
     .then((result)=>{
       this.setState({
@@ -95,7 +94,7 @@ class Dashboard extends Component {
       })
     })
     .catch( (error)=>{
-    return  console.warn(error)
+    // return  console.warn(error)
     })
   }
 

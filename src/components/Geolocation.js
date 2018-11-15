@@ -16,14 +16,14 @@ class Geolocation extends Component {
       
     })
     .catch ( error =>{
-      console.warn('algo falló', error)
+   
     })
 
   }
   
   
   error = (err) => {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
+    // console.warn(`ERROR(${err.code}): ${err.message}`);
   }
   
   geolocate = () => {
