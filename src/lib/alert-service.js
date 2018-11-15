@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-class AlertService {
 
+class AlertService {
   constructor() {
     this.alert = axios.create({
       baseURL: process.env.REACT_APP_BASEURL,
@@ -10,36 +10,27 @@ class AlertService {
   }
 
 
-    create(user){
-      return this.alert.post('/alerts/add', {"id":user._id, 'heroes':user.contacts, 'location':user.location})
-      .then(({data}) => data)
-    }
+  create(user){
+    return this.alert.post('/alerts/add', {"id":user._id, 'heroes':user.contacts, 'location':user.location})
+    .then(({data}) => data)
+  }
 
-    getAlerts(){
-      return this.alert.get('/alerts/')
-    }
+  getAlerts(){
+    return this.alert.get('/alerts/')
+  }
 
-    sendMessage(id, name){
-      return this.alert.post('/alerts/message', {"id":id, "name": name})
-    }
+  sendMessage(id, name, avatar){
+    return this.alert.post('/alerts/message', {"id":id, "name": name, "avatar": avatar})
+  }
 
-    deletemessages(id){
-      return this.alert.post('/alerts/deletemessage', {"id":id})
-    }
+  deletemessages(id){
+    return this.alert.post('/alerts/deletemessage', {"id":id})
+  }
 
-    delete(id){
-      return this.alert.post('/alerts/delete', {"id":id})
-      .then(({data}) => data)
-    }
-
-
-  // edit(user) {
-  //   const { username, password, email, phone, avatar} = user;
-  //   return this.profile.patch('/profile/edit', {username, password, email, phone, avatar })
-  //     .then(({ data }) => data);
-  // }
-
-
+  delete(id){
+    return this.alert.post('/alerts/delete', {"id":id})
+    .then(({data}) => data)
+  }
 }
 
 const alertedit = new AlertService();

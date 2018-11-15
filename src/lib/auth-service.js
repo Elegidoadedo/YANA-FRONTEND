@@ -11,20 +11,18 @@ class Auth {
   signup(user) {
     const { username, password, email, phone, avatar} = user;
     return this.auth.post('/auth/signup', {username, password, email, phone, avatar })
-   
-
       .then(({ data }) => data);
   }
 
   login(user) {
     const { username, password } = user;
     return this.auth.post('/auth/login', {username, password})
-      .then(({ data }) => data);
+    .then(({ data }) => data);
   }
 
   logout() {
     return this.auth.post('/auth/logout', {})
-      .then(response => response.data)
+    .then(response => response.data)
   }
 
   me() {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
-import { GeoJSONLayer } from "react-mapbox-gl";
+import ReactMapboxGl from "react-mapbox-gl";
 import geopos from "../lib/geo-service";
 import { Marker } from "react-mapbox-gl";
 
@@ -50,33 +49,17 @@ const Map = ReactMapboxGl({
           coordinates={this.state.victim.location.coordinates}
           anchor="bottom">
           <p>{this.state.victim.username}</p>
-          <img className="map-avatar" src={this.state.victim.avatar}/>
+          <img className="map-avatar" src={this.state.victim.avatar} alt="victim-avatar"/>
         </Marker>
         <Marker
           coordinates={this.state.user.location.coordinates}
           anchor="bottom">
           <p>{this.state.user.username}</p>
-          <img className="map-avatar" src={this.state.user.avatar}/>
+          <img className="map-avatar" src={this.state.user.avatar} alt="user-avatar"/>
         </Marker>
         </div> : null
 
          }
-           {/* {this.state.points ? <GeoJSONLayer
-              data= {this.state.points}
-              type="symbol"
-
-              symbolLayout={{
-                "icon-image": "circle-11",
-                "text-field": ,
-                "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-                "text-offset": [1, 0],
-                "text-anchor": "top"
-              }}
-              /> : null } */}
-         
-              {/* <Feature coordinates={[2.1903215, 41.3980973]}/> */}
-
-
 
         </Map>
       </div>

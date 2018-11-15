@@ -41,7 +41,7 @@ class Signup extends Component {
     const { username, password, email, phone, avatar } = this.state;
     return (
       <div className="flex-col-center">
-        <img className="logo-med" src={process.env.PUBLIC_URL + '/img/logo-frontpage.png'} alt="Yana icon" />
+        <img className="logo-med" src={process.env.PUBLIC_URL + '/img/logo-header.svg'} alt="Yana icon" />
         <form className="signup-form" onSubmit={this.handleFormSubmit}>
           <label>Username:</label>
           <input type="text" name="username" value={username} onChange={this.handleChange}/>
@@ -53,10 +53,8 @@ class Signup extends Component {
           <input type="number" name="phone" value={phone} onChange={this.handleChange} />
           <label>Avatar</label>
           <input type="text" name="avatar" value={avatar} onChange={this.handleChange} />
-
           <input type="submit" value="Signup" />
         </form>
-
         <p>Already have account? 
           <Link to={"/Login"}> Login</Link>
         </p>

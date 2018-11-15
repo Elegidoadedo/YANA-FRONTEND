@@ -13,14 +13,12 @@ class Geolocation extends Component {
     let crd = pos.coords;
     geopos.addpos(crd)
     .then( result => {
-      console.log('todo guay!')
+      
     })
     .catch ( error =>{
-      console.log('algo falló', error)
+      console.warn('algo falló', error)
     })
-    console.log('Your current position is:');
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`Longitude: ${crd.longitude}`);
+
   }
   
   
@@ -39,7 +37,6 @@ class Geolocation extends Component {
     return (
       <div>
         {this.geolocate()}
-        
       </div>
     )
   }

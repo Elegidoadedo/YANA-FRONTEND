@@ -16,7 +16,7 @@ class ProfileService {
   edit(user) {
     const { username, password, email, phone, avatar} = user;
     return this.profile.put('/profile/edit', {username, password, email, phone, avatar })
-      .then(({ data }) => data);
+    .then(({ data }) => data);
   }
 
   addcontact(contact) {
@@ -28,8 +28,6 @@ class ProfileService {
     return this.profile.get('/profile/info')
     .then(({ data }) => data);
   }
-
-
 }
 
 const profileedit = new ProfileService();

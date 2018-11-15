@@ -4,19 +4,19 @@ import alertedit from '../lib/alert-service';
 import Geolocation from '../components/Geolocation';
 import profileedit from '../lib/profile-service';
 
-
 class Dashboard extends Component {
   state={
     user: null,
     alertmode: false,
   }
+
   intervalID = 0;
   
   
   componentDidMount(){
-          profileedit.getInfo()
-      .then((result)=>{
-      console.log("ME CARGO EN EL DIDMOUTN STATE", result.alertmode);
+    //for first render call getInfo, then interval for updates
+    profileedit.getInfo()
+    .then((result)=>{
       this.setState({
         user:result,
         alertmode:result.alertmode,
@@ -25,36 +25,30 @@ class Dashboard extends Component {
     this.intervalID =  setInterval(()=>{
       profileedit.getInfo()
       .then((result)=>{
-      console.log("ME CARGO EN EL DIDMOUTN STATE", result.alertmode);
-      this.setState({
-        user:result,
-        alertmode:result.alertmode,
+        this.setState({
+          user:result,
+          alertmode:result.alertmode,
+        })
       })
-    })},
-      2000
-    );}
+    },2000)
+  }
 
 
-      componentWillUnmount(){
-        clearInterval(this.intervalID);
-      }
+  componentWillUnmount(){
+    clearInterval(this.intervalID);
+  }
  
   createAlert = () => {
     if(!this.state.alertmode){
-      console.log("creando alerta")
       profileedit.alertmode("true")
       .then((result)=>{
-        console.log("OJO AQUIII", this.state.user)
         alertedit.create(this.state.user)
-        .then((result2)=>{
-          console.log("ESTO ES EL RESULTO A CAMBIAR crear",result2)
-         
+        .then((result2)=>{      
           this.setState({
             user:result,
             alertmode:true, 
             
           })
-          console.log("estado 2",this.state.user.alertmode)
         })
         .catch( (error)=>{
          return  console.log("la has liado", error)
@@ -67,7 +61,6 @@ class Dashboard extends Component {
       .then((result)=>{
         profileedit.alertmode("false")
         .then((result)=>{
-          console.log("ESTO ES EL RESULTO A CAMBIAR borrar",result)
           this.setState({
             user:result, 
             alertmode: false,
@@ -77,8 +70,8 @@ class Dashboard extends Component {
          return  console.log("la has liado", error)
         })
       })
-
-    }}; 
+    }
+  }
 
   handleEraseMessage = () =>{
     alertedit.deletemessages(this.state.user._id)
@@ -90,54 +83,54 @@ class Dashboard extends Component {
         })
       })
       .catch( (error)=>{
-       return  console.log("la has liado", error)
+       return  console.warn(error)
       })
     })
     .catch( (error)=>{
-     return  console.log("la has liado", error)
+     return  console.warn( error)
     })
-  
-  .then((result)=>{
-    this.setState({
-      user:result, 
+    .then((result)=>{
+      this.setState({
+        user:result, 
+      })
     })
-  })
-  .catch( (error)=>{
-   return  console.log("la has liado", error)
-  })
-}
-
-
+    .catch( (error)=>{
+    return  console.warn(error)
+    })
+  }
 
   render() {
-
-
     let {user}= this.state;
     return (
       <div>
-        {!user ? <Geolocation /> : !this.state.alertmode ? <img className="sos-button" onClick={this.createAlert} src="/img/logo-header.svg" />  : <section className="sos-container">
-          <img className="sos-button" onClick={this.createAlert} src="/img/logo-header.svg" />  
+        {!user ? <Geolocation /> : !this.state.alertmode ? <img className="sos-button" alt="sos-logo" onClick={this.createAlert} src="/img/logo-header.svg" />  : <section className="sos-container">
+          <img className="sos-button" onClick={this.createAlert} src="/img/logo-header.svg" alt="sos-logo"/>  
           <Geolocation />
-        {console.log("ESTO ES EL ESTADO DE ALERTMODE:", user.alertmode)}
           <div className="radar"></div>
           <div className="radar"></div>
           <div className="radar"></div>
           <div className="radar"></div>
-          <h3>Sending Emergency signal:</h3>
+          <h3 className="color-red">Sending Emergency signal:</h3>
         </section>
         }
-
+        <div className="call-container">
           <a className="call112" href="tel:112">CALL 112</a>
-          { !user ?null :  <ul>
+          <section className="container-heroes">
+          { !user ?null :  <div className="row-3ele">
             { !user.message ? null:user.message.map ( element => {
-              return <li>{element}</li>
+              return <section className="article-contacts">
+                <img className="logo-med" src={element.avatar} alt="avatar heroes"/>
+                <h3>{element.username}</h3>
+                <p>is going to you!</p>
+              </section>
             })}
-          </ul>}
-        <button className="botton test" onClick={this.handleEraseMessage} >Erase all messages</button>       
+            </div>}
+            </section>
+          <button className="botton test" onClick={this.handleEraseMessage} >Erase all messages</button>       
+        </div>
       </div>
     )
   }
 }
-
 
 export default withAuth(Dashboard);

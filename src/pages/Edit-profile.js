@@ -12,20 +12,12 @@ class Profile extends Component {
  }
 
   handleChange = (event) => {  
-    // const {value} = event.target;
-    // console.log( value)
-
-    // console.log( this.state.username)
     this.setState( {
       [event.target.name]: event.target.value,
-    
-
     });
   }
   
   componentDidMount (){
-    // let user = this.state
-    // profileedit.find( user);
     this.setState({
       username:this.props.user.username,
       phone: this.props.user.phone,
@@ -33,45 +25,35 @@ class Profile extends Component {
       avatar: this.props.user.avatar,
     });
   }
-  
 
   handleFormSubmit = (event) => {
     event.preventDefault();
     const {username, password, email, phone, avatar} = this.state
 
+    profileedit.edit({username, password, email, phone, avatar})
+    .then((result)=>{
+      this.props.setUser(result);
+      console.log ("muestro esto:" ,result)
+      this.setState( {
+        username:result.username,
+        phone: result.phone,
+        email: result.email,
+        avatar: result.avatar})
+    })
+  }
 
-      profileedit.edit({username, password, email, phone, avatar})
-      .then((result)=>{
-        this.props.setUser(result);
-        console.log ("muestro esto:" ,result)
-        this.setState( {
-          username:result.username,
-          phone: result.phone,
-          email: result.email,
-          avatar: result.avatar})
-        
-
-      })
-    }
-    handlesearchSubmit = (event) => {
-      // event.preventDefault();
-      const {contact} = this.state
-  
-  
-        profileedit.addcontact({contact})
-        .then((result)=>{
-          console.log (result)
-          this.setState( {result})
-          
-  
-        })
-      }
+  handlesearchSubmit = (event) => {
+    const {contact} = this.state
+    profileedit.addcontact({contact})
+    .then((result)=>{
+      this.setState( {result})
+    })
+  }
 
 
   render() {
     const {user} = this.props;
 
-       
     return (
       <div>
       <form >
@@ -85,7 +67,6 @@ class Profile extends Component {
         <input type="text" name="avatar" value={this.state.avatar} placeholder={user.avatar} onChange={this.handleChange}/>
         <button type="submit" onClick={this.handleFormSubmit}>Submit!</button>
       </form>
-
       <input type="text" name="contact" onChange={this.handleChange} ></input>
       <button type="submit" onClick={this.handlesearchSubmit}>Search!</button>
       </div>

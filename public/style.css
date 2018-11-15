@@ -112,16 +112,6 @@ p {
   height: 100px;
 }
 
-/* .sos-button{
-  background-color: #cc1f1f;
-  padding: 38% 21%;
-  font-size: 5rem;
-  border-radius: 162px;
-  height: unset;
-  letter-spacing: 0;
-} */
-
-
 .footer-menu{
   z-index: 10;
   width: 100vw;
@@ -140,7 +130,7 @@ p {
   color:white;
 }
 .footer-menu a:hover {
-  color: red;
+  color: #ff8f0b;
 }
 .fa, .far, .fas{
   font-size: 1.5em;
@@ -189,7 +179,7 @@ input[type='submit']{
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width:35%;
+  width:30%;
 }
 .map{
   display:flex;
@@ -289,16 +279,36 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact,.mapboxgl-ctrl-attrib.mapboxgl-compact::af
 }
 
 .call112{
-  padding: 3px 10px;
-  background-color: black;
-  color: yellow;
+  padding: 8px 17px;
+  background-color: #225566;
+  color: #ff8f0b;
   font-weight: bold;
   font-size: 1.2em;
-  border: 1px solid yellow;
+  border: 2px solid #ff8f0b;
   height: 40px;
   text-align: center;
+  margin-bottom: 25px;
 }
 
-.test{
-  margin-bottom:100%
+.color-red{
+  color:red;
+}
+.call-container{
+  text-align: center;
+}
+.container-heroes{
+  margin-top: 10%;
+}
+.article-contacts h3{
+  margin-bottom: 0;
+}
+.button, button, input[type='button'], input[type='reset'], input[type='submit']{
+  background-color: #225566;
+  color: #ff8f0b;
+}
+.flex-col-center p{
+  margin-bottom: 0;
+}
+.flex-col-center a{
+  text-transform: uppercase;
 }

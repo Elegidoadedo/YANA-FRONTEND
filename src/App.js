@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import {Switch} from 'react-router-dom'
 
 import PrivateRoute from './components/PrivateRoute'
 import PublicRoute from './components/PublicRoute'
@@ -10,7 +10,6 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import EditProfile from './pages/Edit-profile';
-import Messages from './pages/Messages';
 import Alerts from './pages/Alerts';
 
 
@@ -31,7 +30,6 @@ class App extends Component {
               <PublicRoute path="/login" component={Login} />
               <PublicRoute path="/signup" component={Signup} />
               <PrivateRoute path="/dashboard" component={Dashboard} />
-              <PrivateRoute path="/messages" component={Messages} />
               <PrivateRoute path="/alerts" component={Alerts} />
               <PrivateRoute path="/profile" component={Profile} />
               <PrivateRoute path="/edit-profile" component={EditProfile} />
