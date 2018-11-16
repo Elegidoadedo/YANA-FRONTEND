@@ -3,6 +3,8 @@ import { withAuth } from '../lib/authContext';
 import alertedit from '../lib/alert-service';
 import Geolocation from '../components/Geolocation';
 import profileedit from '../lib/profile-service';
+import  io from 'socket.io-client';
+
 
 class Dashboard extends Component {
   state={
@@ -12,6 +14,7 @@ class Dashboard extends Component {
 
   intervalID = 0;
   
+
   
   componentDidMount(){
     //for first render call getInfo, then interval for updates
@@ -20,18 +23,23 @@ class Dashboard extends Component {
       this.setState({
         user:result,
         alertmode:result.alertmode,
+
       })
+
     })
-    this.intervalID =  setInterval(()=>{
-      profileedit.getInfo()
-      .then((result)=>{
-        this.setState({
-          user:result,
-          alertmode:result.alertmode,
-        })
-      })
-    },2000)
-  }
+    
+};
+
+  //   this.intervalID =  setInterval(()=>{
+  //     profileedit.getInfo()
+  //     .then((result)=>{
+  //       this.setState({
+  //         user:result,
+  //         alertmode:result.alertmode,
+  //       })
+  //     })
+  //   },2000)
+  // }
 
 
   componentWillUnmount(){
@@ -97,7 +105,12 @@ class Dashboard extends Component {
     // return  console.warn(error)
     })
   }
-
+            this.socket=io('http://localhost:5000')
+              this.socket.on('people', (data) => {
+                let data = JSON.parse(data)
+                data = data.username
+                this.trigger(data)
+              })
   render() {
     let {user}= this.state;
     return (
@@ -123,7 +136,12 @@ class Dashboard extends Component {
                 <p>is going to you!</p>
               </section>
             })}
+        {
+          
+        }          
             </div>}
+            {io()}
+
             </section>
           <button className="botton test" onClick={this.handleEraseMessage} >Erase all messages</button>       
         </div>
