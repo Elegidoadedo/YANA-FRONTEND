@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom'
     return (
       <div className= "flex-col-center">
         <img className="logo-front" src={process.env.PUBLIC_URL + '/img/logo-frontpage.svg'} alt="Yana icon" />
-        <p> You have already an Account?</p> 
+        <p> Already have an Account?</p> 
         <Link className="button-primary" to='./Login'>Log in!</Link>
-        <p> Do you need an Account?</p> 
+        <p> Do you need one?</p> 
         <Link className="button-primary" to='./Signup'>SIGN UP!</Link>
       </div>
     )
