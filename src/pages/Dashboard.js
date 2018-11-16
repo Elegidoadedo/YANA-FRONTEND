@@ -102,9 +102,9 @@ class Dashboard extends Component {
     let {user}= this.state;
     return (
       <div>
+          <Geolocation />
         {!user ? <Geolocation /> : !this.state.alertmode ? <img className="sos-button" alt="sos-logo" onClick={this.createAlert} src="/img/logo-header.svg" />  : <section className="sos-container">
           <img className="sos-button" onClick={this.createAlert} src="/img/logo-header.svg" alt="sos-logo"/>  
-          <Geolocation />
           <div className="radar"></div>
           <div className="radar"></div>
           <div className="radar"></div>
