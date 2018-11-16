@@ -28,13 +28,16 @@ class Login extends Component {
   render() {
     const { username, password } = this.state;
     return (
-      <form onSubmit={this.handleFormSubmit}>
-        <label>Username:</label>
-        <input type="text" name="username" value={username} onChange={this.handleChange}/>
-        <label>Password:</label>
-        <input type="password" name="password" value={password} onChange={this.handleChange} />
-        <input type="submit" value="Login" />
-      </form>
+      <div className="flex-col-center">
+        <img className="logo-med" src={process.env.PUBLIC_URL + '/img/logo-header.svg'} alt="Yana icon" />     
+        <form onSubmit={this.handleFormSubmit}>
+          <label>Username:</label>
+          <input type="text" name="username" value={username} onChange={this.handleChange}/>
+          <label>Password:</label>
+          <input type="password" name="password" value={password} onChange={this.handleChange} />
+          <input type="submit" value="Login" />
+        </form>
+      </div>
     )
   }
 }

@@ -33,16 +33,16 @@ const Map = ReactMapboxGl({
      return (
        <div>
 
-        <Map center={[2.189945, 41.397039] } 
+         { this.state.victim ?
+       <div>
+        <Map center= {this.state.victim.location.coordinates} 
           style="mapbox://styles/mapbox/streets-v9"
           containerStyle={{
             zoom: 1.6,
             height: "200px",
             width: "200px",
             
-        }}>
-        { this.state.victim ?
-        <div>
+          }}>
         <Marker
           coordinates={this.state.victim.location.coordinates}
           anchor="bottom">
@@ -55,11 +55,11 @@ const Map = ReactMapboxGl({
           <p>{this.state.user.username}</p>
           <img className="map-avatar" src={this.state.user.avatar} alt="user-avatar"/>
         </Marker>
+        </Map>
         </div> : null
 
          }
 
-        </Map>
       </div>
     )
   }

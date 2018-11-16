@@ -28,9 +28,21 @@ p {
   margin: 0;
 }
 
+.color-red{
+  color:red;
+}
 
+.text-bold{
+  font-weight: bold;
+}
 
-/* ---- layout ---- */
+/* ---- general  ---- */
+
+.flex-col-center{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 #site-header {
   padding: 30px 0;
@@ -46,6 +58,10 @@ p {
 
 #site-main {
   margin-bottom: 60px;
+}
+
+.botton{
+  margin-bottom: 23%;
 }
 
 .container {
@@ -66,46 +82,8 @@ p {
 
 
 
-
 /* ---- components ---- */
-
-.logo-front{
-  margin: 10% 0 10% 12%;
-}
-.flex-col-center p{
-  margin-top: 22px;
-}
-.button {
-  width: 100%;
-  background-color: blue;
-  color: #fff;
-  border: 1px solid #fff
-}
-
-.button-alt {
-  color: blue;
-  background-color: #fff;
-}
-
-
-
-.signup-form{
-  margin-top:0%;
-}
-.logo-med{
-  margin: 3% auto 0; 
-  width: 35%;
-  height: auto;
-}
-
-.flex-col-center{
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-}
-.logo-peq{
-  height: 60%;
-}
+/* ---- Menus & nav-bars --- */
 .flex-navbar{
   display: flex;
   justify-content: space-between;
@@ -135,6 +113,29 @@ p {
 .fa, .far, .fas{
   font-size: 1.5em;
 }
+
+/* --- logos --- */
+
+.logo-front{
+  margin: 10% 0 10% 12%;
+}
+
+.logo-med{
+  margin: 3% auto 0; 
+  width: 35%;
+  height: auto;
+}
+
+
+.logo-peq{
+  height: 60%;
+}
+
+.nav-logo{
+  margin: 20px 0 0 20px;
+}
+
+/* --- avatars --- */
 .avatar-profile{
   width: 100px;
   height: 100px;
@@ -145,13 +146,46 @@ p {
   height: 50px; */
   border-radius: 120px;
 }
-.text-bold{
-  font-weight: bold;
-}
+
 .map-avatar{
   width:30px;
   height: 30px;
 }
+
+/* --- buttons --- */
+
+.button {
+  width: 100%;
+  background-color: blue;
+  color: #fff;
+  border: 1px solid #fff
+}
+
+.button-alt {
+  color: blue;
+  background-color: #fff;
+}
+
+/* --- home page --- */
+
+.flex-col-center p{
+  margin-top: 22px;
+}
+
+.flex-col-center p{
+  margin-bottom: 0;
+}
+.flex-col-center a{
+  text-transform: uppercase;
+}
+
+/* --- sign-up page --- */
+
+.signup-form{
+  margin-top:0%;
+}
+
+/* --- profile page --- */
 
 .flex-profile-info{
   display: flex;
@@ -166,9 +200,7 @@ input[type='submit']{
   color: white;
 }
 
-.botton{
-  margin-bottom: 23%;
-}
+
 .row-3ele{
   display:flex;
   justify-content: space-around;
@@ -181,6 +213,9 @@ input[type='submit']{
   justify-content: space-around;
   width:30%;
 }
+
+/* --- alerts page --- */
+
 .map{
   display:flex;
   flex-direction: column;
@@ -207,12 +242,14 @@ input[type='submit']{
 .section-flex{
   display:flex;
 }
-/*/--- Erase mapbox logos ---/*/
+
+/* --- Erase mapbox logos --- */
 a.mapboxgl-ctrl-logo.mapboxgl-compact,.mapboxgl-ctrl-attrib.mapboxgl-compact::after{
   display: none;
 }
 
-/*--- radar ---*/
+/* --- dhasboard page --- */
+/* --- radar --- */
 @keyframes radar{
   0%{
       width:50px;
@@ -287,12 +324,10 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact,.mapboxgl-ctrl-attrib.mapboxgl-compact::af
   border: 2px solid #ff8f0b;
   height: 40px;
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
-.color-red{
-  color:red;
-}
+
 .call-container{
   text-align: center;
 }
@@ -306,12 +341,4 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact,.mapboxgl-ctrl-attrib.mapboxgl-compact::af
   background-color: #225566;
   color: #ff8f0b;
 }
-.flex-col-center p{
-  margin-bottom: 0;
-}
-.flex-col-center a{
-  text-transform: uppercase;
-}
-.nav-logo{
-  margin: 20px 0 0 20px;
-}
+

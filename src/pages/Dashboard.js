@@ -30,7 +30,7 @@ class Dashboard extends Component {
           alertmode:result.alertmode,
         })
       })
-    },2000)
+    },1000)
   }
 
 
@@ -117,7 +117,7 @@ class Dashboard extends Component {
           <section className="container-heroes">
           { !user ?null :  <div className="row-3ele">
             { !user.message ? null:user.message.map ( element => {
-              return <section className="article-contacts">
+              return <section className="article-contacts" key={element._id}>
                 <img className="logo-med" src={element.avatar} alt="avatar heroes"/>
                 <h3>{element.username}</h3>
                 <p>is going to you!</p>
