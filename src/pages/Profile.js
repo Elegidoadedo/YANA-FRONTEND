@@ -35,26 +35,28 @@ class Profile extends Component {
     const {user} = this.state;
        
     return (
-      <div>
+      <div className="text-color-dark">
         { user ? <div>
+          <hr className="hr-color"/>
           <div className="flex-profile-info">
             <div>
-              <section className= "section-flex">
-                <p className="text-bold">Name:</p>
-                <p> {user.username}</p>
+              <section>
+                <p className="text-bold margin-input">Name:</p>
+                <p className="margin-input"> {user.username}</p>
               </section>
-              <section className= "section-flex">
-                <p className="text-bold">Email:</p>
-                <p>{user.email}</p>
+              <section>
+                <p className="text-bold margin-input">Email:</p>
+                <p className="margin-input">{user.email}</p>
               </section>
-              <section className= "section-flex">
-              <p className="text-bold">Phone Number:</p>
-              <p>{user.phone}</p>
+              <section>
+              <p className="text-bold margin-input">Phone Number:</p>
+              <p className="margin-input">{user.phone}</p>
               </section>
             </div>
             <img className="avatar-profile" src={user.avatar} alt="avatar"></img>
           </div>
          <div>
+         <hr className="hr-color"/>
          <h3>Contacts:</h3>
          <ul className="row-3ele">
          {user.contacts.map( (contact,idx) =>{
@@ -67,7 +69,7 @@ class Profile extends Component {
          </div>
         :null }
         <div className="call-container botton">
-        <Link className="call112" to="./edit-profile" >Edit </Link> 
+        <Link className="button-primary" to="./edit-profile" >Edit </Link> 
         </div>
       </div>
     )

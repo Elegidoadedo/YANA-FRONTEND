@@ -27,6 +27,18 @@ body {
 p {
   margin: 0;
 }
+.hr-color{
+  border-top:0.2rem solid #225566;
+  width: 100%;
+  margin: 15px 0;
+}
+.margin-input{
+  margin-bottom: 0;
+}
+
+.text-color-dark{
+  color:#225566;
+}
 
 .color-red{
   color:red;
@@ -199,6 +211,7 @@ p {
 label{
   color: #225566;
 }
+
 input[type='submit']{
   background-color: #225566;
   color: white;
@@ -359,3 +372,14 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact,.mapboxgl-ctrl-attrib.mapboxgl-compact::af
   color: #ff8f0b;
 }
 
+#edit-form input{
+  border: none;
+  background-color: transparent;
+  border-bottom: 0.2rem solid #225566;
+  border-radius: 0;
+  box-shadow: none;
+  box-sizing: inherit;
+  height: 3.8rem;
+  padding: .6rem 1.0rem;
+  width: 100%;
+}

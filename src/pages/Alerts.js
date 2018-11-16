@@ -24,7 +24,9 @@ class Alerts extends Component {
     let {arrayAlerts} = this.state;
     return (
       <div>
-        <h3 className="text-center">Active Alerts:</h3>
+        <h3 className="text-center text-color-dark">Active Alerts:</h3>
+        <hr className="hr-color"/>
+
         { arrayAlerts ? <ul>{arrayAlerts.map( (element, idx) => {
           return<section className="map" key={element._id}>
             <section className="row-3ele">

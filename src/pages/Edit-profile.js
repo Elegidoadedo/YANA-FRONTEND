@@ -55,7 +55,7 @@ class Profile extends Component {
 
     return (
       <div className="botton">
-      <form >
+      <form id="edit-form" >
         <label>Username</label>
         <input type="text" name="username" value={this.state.username} placeholder={user.username} onChange={this.handleChange} />
         <label>Email</label>
