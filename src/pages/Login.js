@@ -29,7 +29,7 @@ class Login extends Component {
     const { username, password } = this.state;
     return (
       <div className="flex-col-center">
-        <img className="logo-med" src={process.env.PUBLIC_URL + '/img/logo-header.svg'} alt="Yana icon" />     
+        <img className="logo-med login-img" src={process.env.PUBLIC_URL + '/img/logo-header.svg'} alt="Yana icon" />     
         <form onSubmit={this.handleFormSubmit}>
           <label>Username:</label>
           <input type="text" name="username" value={username} onChange={this.handleChange}/>
